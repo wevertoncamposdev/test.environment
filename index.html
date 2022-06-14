@@ -1,50 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt">
 
-<div class="d-flex justify-content-center bg-light">
-    <h1>DropZone</h1>
-</div>
+<head>
+    <meta charset="utf-8" />
+    <title>DropZone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Sistema de Indicadores da Alvorada" name="description" />
+    <meta content="Weverton Campos" name="author" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/logo_sm.png">
+
+    <!-- third party css -->
+    <link href="assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <!-- third party css end -->
+
+    <!-- App css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+
+</head>
 
 
-<!-- File Upload --> 
-<form action="upload.php" method="post" enctype="multipart/form-data" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
-    data-upload-preview-template="#uploadPreviewTemplate">
-    <div class="fallback">
-        <input name="file" type="file" multiple />
-    </div>
+<body class="show" data-layout-color="light" data-layout-mode="fluid" data-rightbar-onstart="true"
+    data-leftbar-theme="dark">
 
-    <div class="dz-message needsclick">
-        <i class="h1 text-muted dripicons-cloud-upload"></i>
-        <h3>Drop files here or click to upload.</h3>
-        <span class="text-muted font-13">(This is just a demo dropzone. Selected files are
-            <strong>not</strong> actually uploaded.)</span>
-    </div>
-    <div class="d-flex justify-content-center">
-        <input type="submit" class="btn btn-primary">
-    </div>
-</form>
+    <section>
+        <div class="d-flex justify-content-center bg-light">
+            <h1>DropZone</h1>
+        </div>
+
+        <!-- File Upload -->
+        <form action="upload.php" method="post" enctype="multipart/form-data" class="dropzone" id="myAwesomeDropzone"
+            data-plugin="dropzone" data-previews-container="#file-previews"
+            data-upload-preview-template="#uploadPreviewTemplate">
+
+            <div class="fallback">
+                <input name="file" type="file" multiple />
+            </div>
+
+            <div class="dz-message needsclick">
+                <i class="h1 text-muted dripicons-cloud-upload"></i>
+                <h3>Drop files here or click to upload.</h3>
+                <span class="text-muted font-13">(This is just a demo dropzone. Selected files are
+                    <strong>not</strong> actually uploaded.)</span>
+            </div>
+            <div class="d-flex justify-content-center">
+                <input type="submit" class="btn btn-primary">
+            </div>
+        </form>
 
 
-<!-- Preview -->
-<div class="dropzone-previews mt-3" id="file-previews"></div>
+        <!-- Preview -->
+        <div class="dropzone-previews mt-3" id="file-previews"></div>
 
-<!-- file preview template -->
-<div class="d-none" id="uploadPreviewTemplate">
-    <div class="card mt-1 mb-0 shadow-none border">
-        <div class="p-2">
-            <div class="row align-items-center">
-                <div class="col-auto">
-                    <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
-                </div>
-                <div class="col ps-0">
-                    <a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name></a>
-                    <p class="mb-0" data-dz-size></p>
-                </div>
-                <div class="col-auto">
-                    <!-- Button -->
-                    <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
-                        <i class="dripicons-cross"></i>
-                    </a>
+        <!-- file preview template -->
+        <div class="d-none" id="uploadPreviewTemplate">
+            <div class="card mt-1 mb-0 shadow-none border">
+                <div class="p-2">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
+                        </div>
+                        <div class="col ps-0">
+                            <a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name></a>
+                            <p class="mb-0" data-dz-size></p>
+                        </div>
+                        <div class="col-auto">
+                            <!-- Button -->
+                            <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
+                                <i class="dripicons-cross"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
+    </section>
+
+    <section>
+
+        <div class="d-flex justify-content-center bg-light">
+            <h1>DropZone</h1>
+        </div>
+
+        <!-- File Upload -->
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+
+            <div class="d-flex justify-content-center my-3">
+                <input name="content" type="text"/>
+            </div>
+            <div class="d-flex justify-content-center my-3">
+                <input name="other_files[]" type="file" multiple />
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <input type="submit" class="btn btn-primary">
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- bundle -->
+    <script src="assets/js/vendor.min.js"></script>
+    <script src="assets/js/app.min.js"></script>
+
+    <!-- Dropzone js -->
+    <script src="assets/js/vendor/dropzone.min.js"></script>
+
+    <!-- File upload js -->
+    <script src="assets/js/ui/component.fileupload.js"></script>
+
+
+</body>
+
+</html>
