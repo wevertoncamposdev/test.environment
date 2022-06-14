@@ -1,0 +1,18 @@
+{
+    "nome":"crechealvorada.org",
+    "description": "SIA sistema de indicadores da Associção Alvorada",
+    "authors": [
+        {
+            "name": "Weverton Campos",
+            "email": "wevertoncamposdev@gmail.com"
+        }
+    ],
+    "autoload":{
+        "psr-4": {
+            "app\\": "app/"
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.6"
+    }
+}

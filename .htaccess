@@ -1,0 +1,44 @@
+<IfModule mime_module>
+    
+  AddHandler application/x-httpd-ea-php73___lsphp .php .php7 .phtml
+
+  # BLOQUEANDO ACESSO AOS ARQUIVOS E PASTAS
+  Options -Indexes
+
+  # BOQUEANDO ACESSO AO .ENV
+  <FilesMatch "\.env">
+      Deny from all
+  </FilesMatch>
+  <FilesMatch "\.txt">
+      Deny from all
+  </FilesMatch>
+
+  RewriteEngine On
+
+  # REGRA PARA ENVIAR PARA INDEX CASO NÃO EXISTA A ROTA
+
+  # SE O ARQUIVO EXISTIR MOSTRE ELE
+  RewriteCond %{REQUEST_FILENAME} !-f
+
+  # SE NÃO EXISTIR REESCREVA A URL
+  RewriteRule ^(.*)$ index.php [QSA,NC] 
+
+  # REGRA PARA EXIGIR O USO DE CERTIFICADO SSL
+  RewriteCond %{HTTP_HOST} sia\.crechealvorada\.org [NC]
+  RewriteCond %{SERVER_PORT} 80
+  RewriteRule ^(.*)$ https://sia.crechealvorada.org/ [R,L]
+
+  # REGRA PARA REDIRECIONAR PARA PÁGINA DE ERRO
+  ErrorDocument 403 /
+  ErrorDocument 404 /
+  ErrorDocument 500 /
+
+
+
+</IfModule>
+
+# php -- END cPanel-generated handler, do not edit
+
+
+
+ 
