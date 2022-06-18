@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>DropZone</title>
+    <title>PORTAL || TRANSPARÊNCIA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="PESQUISA DADOS SOBRE CORONAVIRUS NO PORTAL DA TRANSPARÊNCIA DO GOVERNO" name="PESQUISA DADOS SOBRE CORONAVIRUS NO PORTAL DA TRANSPARÊNCIA DO GOVERNO" />
     <meta content="Weverton Campos" name="Weverton Campos" />
