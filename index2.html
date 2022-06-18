@@ -31,24 +31,15 @@
         </div>
 
         <!-- File Upload -->
-        <form action="upload.php" method="post" enctype="multipart/form-data" class="dropzone" id="myAwesomeDropzone"
-            data-plugin="dropzone" data-previews-container="#file-previews"
-            data-upload-preview-template="#uploadPreviewTemplate">
-
-            <div class="fallback">
-                <input name="file" type="file" multiple />
-            </div>
-
-            <div class="dz-message needsclick">
-                <i class="h1 text-muted dripicons-cloud-upload"></i>
-                <h3>Drop files here or click to upload.</h3>
-                <span class="text-muted font-13">(This is just a demo dropzone. Selected files are
-                    <strong>not</strong> actually uploaded.)</span>
-            </div>
-            <div class="d-flex justify-content-center">
-                <input type="submit" class="btn btn-primary">
-            </div>
-        </form>
+        <form action="upload.php" method="POST" id="my-awesome-dropzone" class="dropzone">
+            <div class="dropzone-previews"></div> <!-- this is were the previews should be shown. -->
+            
+            <!-- Now setup your input fields -->
+            <input type="email" name="username" />
+            <input type="password" name="password" />
+          
+            <button type="submit">Submit data and files!</button>
+          </form>
 
 
         <!-- Preview -->
@@ -89,7 +80,7 @@
         <form action="upload.php" method="post" enctype="multipart/form-data">
 
             <div class="d-flex justify-content-center my-3">
-                <input name="content" type="text"/>
+                <input name="content" type="text" />
             </div>
             <div class="d-flex justify-content-center my-3">
                 <input name="other_files[]" type="file" multiple />
@@ -110,9 +101,13 @@
 
     <!-- Dropzone js -->
     <script src="assets/js/vendor/dropzone.min.js"></script>
-
+        
     <!-- File upload js -->
     <script src="assets/js/ui/component.fileupload.js"></script>
+
+    <!-- Dropzone js -->
+    <script src="assets/js/vendor/dropzone.js"></script>
+
 
 
 </body>
