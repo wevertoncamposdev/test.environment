@@ -79,6 +79,8 @@
         } else {
             $date = $_POST['info'][0];
             $page = $_POST['info'][1];
+            $result = array();
+            $maxValue = array();
 
             for ($i = 1; $i <= $page; $i++) {
 
@@ -90,9 +92,14 @@
                 curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
 
                 $response = curl_exec($client);
-                $result = json_decode($response, true);
-                $json_result = json_encode($result);
+                $response = json_decode($response);
+                foreach ($response  as $key => $value) {
+                    array_push($result, (array)$value);
+                    array_push($maxValue, $value->valor);
+                }
             }
+            $cont = array(2, 4, 5);
+            $json_result = json_encode($result);
         }
         ?>
 
@@ -149,7 +156,7 @@
 
     <section class="container mb-5">
         <div class="row">
-            <div class="col-xl-12">
+            <div class="col-xl-12 h-100">
                 <div class="card">
                     <div class="card-body">
                         <div dir="ltr">
@@ -206,18 +213,15 @@
     <!-- third party end -->
 
     <script>
-        console.log(<?= $json_result ?>)
         let result = <?= $json_result ?>;
 
         let valor = []
         let data = []
         result.forEach((value) => {
-            valor.push(value['favorecido'])
-            data.push(value['valor'])
+            data.push(value['favorecido'])
+            valor.push(value['valor'])
         })
 
-        console.log(valor);
-        console.log(data);
 
         let el = document.getElementById('basic-bar');
         let optinons = {
@@ -229,16 +233,34 @@
                     horizontal: true
                 }
             },
+            dataLabels: {
+                enabled: false
+            },
             series: [{
                 name: 'Valor',
-                data: data
+                data: valor
             }],
             xaxis: {
-                categories: valor
+                categories: data,
+                labels: {
+                    show: true
+                }
+            },
+            yaxis:{
+                labels: {
+                    show: false
+                }
             },
             title: {
-                text: 'VALORES'
+                text: 'Maiores Valores',
+                align: 'center',
+                
+            },
+            subtitle: {
+                text: 'Análise de maiores valores aprovados',
+                align: 'center'
             }
+
         }
         let chart = new ApexCharts(el, optinons);
         chart.render();
