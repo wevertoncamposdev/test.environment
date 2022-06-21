@@ -80,7 +80,6 @@
             $date = $_POST['info'][0];
             $page = $_POST['info'][1];
             $result = array();
-            $maxValue = array();
 
             for ($i = 1; $i <= $page; $i++) {
 
@@ -95,7 +94,6 @@
                 $response = json_decode($response);
                 foreach ($response  as $key => $value) {
                     array_push($result, (array)$value);
-                    array_push($maxValue, $value->valor);
                 }
             }
             $cont = array(2, 4, 5);
@@ -117,14 +115,15 @@
                             <?php
 
                             if (isset($result)) {
-                                $row = array();
-                                foreach ($result as $row) {
-                                    $row = $row;
-                                }
 
-                                foreach ($row as $key => $val) {
+                                $keys = array();
+                                foreach (array_reverse($result[0]) as $key => $value) {
+                                    array_push($keys, $key);
+                                }
+                                foreach ($keys as $key) {
                                     echo ("<th>$key</th>");
                                 }
+
                                 //curl_close($client);
                             }
                             ?>
@@ -136,9 +135,17 @@
 
                         <?php
                         if (isset($result)) {
+                            setlocale(LC_MONETARY, "pt_BR");
                             foreach ($result as $row) {
                                 echo "<tr>";
-                                foreach ($row as $key => $val) {
+                                foreach (array_reverse($row) as $key => $val) {
+                                    if ($key == 'valor') {
+                                        $val = str_replace('.', '', $val);
+                                        $str_val = str_replace(',', '.', $val);
+                                        $val = (float)$str_val ;
+                                       
+                                    }
+                                   
                                     echo ("<td>$val</td>");
                                 }
                                 echo "</tr>";
@@ -219,8 +226,12 @@
         let data = []
         result.forEach((value) => {
             data.push(value['favorecido'])
-            valor.push(value['valor'])
+            let number = Number(value['valor'].replace('.', '').replace('.', '').replace(',', '.'));
+            valor.push(number)
         })
+
+        console.log(data);
+        console.log((valor));
 
 
         let el = document.getElementById('basic-bar');
@@ -237,8 +248,10 @@
                 enabled: false
             },
             series: [{
+
                 name: 'Valor',
                 data: valor
+
             }],
             xaxis: {
                 categories: data,
@@ -246,15 +259,15 @@
                     show: true
                 }
             },
-            yaxis:{
+            yaxis: {
                 labels: {
                     show: false
                 }
             },
             title: {
-                text: 'Maiores Valores',
+                text: 'Valores // Fornecedores',
                 align: 'center',
-                
+
             },
             subtitle: {
                 text: 'Análise de maiores valores aprovados',
