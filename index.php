@@ -108,7 +108,7 @@
         <div class="tab-content mb-5 mt-3">
 
             <div class="tab-pane show active" id="basic-datatable-preview">
-                <table id="basic-datatable" class="table table-striped dt-responsive nowrap w-100">
+                <table id="basic-datatable" class="table table-striped dt-responsive w-100">
                     <thead>
                         <tr>
 
